@@ -1,0 +1,372 @@
+/* Basic Reset & Body Styling */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f2f5;
+    color: #333;
+    flex-direction: column;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Container Styling */
+.container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+/* Scoreboard Styling */
+.scoreboard {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.score-player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.score-player span {
+    font-size: 1.5em;
+    color: #3498db; /* Blue score color */
+    margin-bottom: 5px;
+}
+
+/* Status Message Styling */
+.status {
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    font-weight: 500;
+    min-height: 1.5em;
+    color: #3498db;
+}
+
+/* Board Styling */
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 10px;
+    margin: 20px auto;
+    width: max-content;
+}
+
+/* Cell Styling */
+.cell {
+    width: 100px;
+    height: 100px;
+    background-color: rgba(236, 240, 241, 0.8);
+    border: none;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3.5em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    user-select: none;
+    color: transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.cell:hover {
+    background-color: rgba(18, 185, 149, 0.8);
+}
+
+.cell:active {
+    transform: scale(0.95);
+}
+
+/* Player Specific Cell Styling (Image Backgrounds) - Default Theme (Light) */
+.cell.x {
+    background-image: url('resources/defualt_theme/d_x.png');
+}
+
+.cell.o {
+    background-image: url('resources/defualt_theme/d_o.png');
+}
+
+/* Player Specific Cell Styling (Image Backgrounds) - Default Theme (Dark) */
+body.dark-theme .cell.x {
+    background-image: url('resources/defualt_theme/d_x_d.png'); /* New dark X image */
+}
+
+body.dark-theme .cell.o {
+    background-image: url('resources/defualt_theme/d_o_d.png'); /* New dark O image */
+}
+
+/* Button Styling */
+#resetButton, #themeToggle {
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 1em;
+    color: #fff;
+    background-color: #3498db;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+#resetButton:hover, #themeToggle:hover {
+    background-color: #2980b9;
+}
+
+#resetButton:active, #themeToggle:active {
+    transform: scale(0.98);
+}
+
+/* Dark Theme (General) */
+body.dark-theme {
+    background-color: #222;
+    color: #eee;
+}
+
+body.dark-theme .container {
+    background-color: rgba(51, 51, 51, 0.8);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-theme h1 {
+    color: #eee;
+}
+
+body.dark-theme .status {
+    color: #6dd5ed;
+}
+
+body.dark-theme .cell {
+    background-color: rgba(68, 68, 68, 0.8);
+}
+
+body.dark-theme .cell:hover {
+    background-color: rgba(74, 30, 116, 0.8);
+}
+
+body.dark-theme #resetButton, body.dark-theme #themeToggle {
+    background-color: #6dd5ed;
+}
+
+body.dark-theme #resetButton:hover, body.dark-theme #themeToggle:hover {
+    background-color: #55a3b8;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .board {
+        grid-template-columns: repeat(3, 80px);
+        grid-template-rows: repeat(3, 80px);
+        gap: 5px;
+    }
+
+    .cell {
+        width: 80px;
+        height: 80px;
+        font-size: 2.5em;
+    }
+
+    .container {
+        padding: 20px 30px;
+    }
+}
+
+/* Skin Selector */
+.skin-selector {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.skin-selector label {
+    font-weight: bold;
+}
+
+#skinSelect {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+/* Retro Skin - Light Theme */
+body.retro {
+    background-color: #333;
+    color: #f0f0f0;
+    background-image: url('resources/retro_theme/r_bg_l.jpeg'); /* Light Retro BG */
+}
+
+body.retro .container {
+    background-color: rgba(85, 85, 85, 0.8);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+body.retro h1 {
+    color: #f0f0f0;
+}
+
+body.retro .status {
+    color: #ffcc00;
+}
+
+body.retro .cell {
+    background-color: rgba(119, 119, 119, 0.8);
+    border: 2px solid #999999;
+}
+
+body.retro .cell:hover {
+    background-color: rgba(176, 199, 47, 0.8);
+}
+
+body.retro .cell.x {
+    background-image: url('resources/retro_theme/r_x.png');
+}
+
+body.retro .cell.o {
+    background-image: url('resources/retro_theme/r_o.png');
+}
+
+body.retro #resetButton, body.retro #themeToggle {
+    background-color: #ffcc00;
+    color: #333;
+}
+
+body.retro #resetButton:hover, body.retro #themeToggle:hover {
+    background-color: #ffdd33;
+}
+
+/* Retro Skin - Dark Theme */
+body.dark-theme.retro {
+    background-color: #222;
+    color: #eee;
+    background-image: url('resources/retro_theme/r_bg_d.jpeg'); /* Dark Retro BG */
+}
+
+/* Neon Skin - Light Theme */
+body.neon {
+    background-color: #000;
+    color: #fff;
+    background-image: url('resources/neon_theme/n_bg_l.jpeg') /* Light Neon BG */
+}
+
+body.neon .container {
+    background-color: rgba(17, 17, 17, 0.8);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+body.neon h1 {
+    color: #00ffff;
+    text-shadow: 0 0 10px #00ffff;
+}
+
+body.neon .status {
+    color: #98c51b;
+    text-shadow: 0 0 5px #00ff00;
+}
+
+body.neon .cell {
+    background-color: rgba(34, 34, 34, 0.8);
+    border: 2px solid #00e1ff;
+    box-shadow: 0 0 10px #00ffff;
+}
+
+body.neon .cell:hover {
+    background-color: rgba(51, 51, 51, 0.8);
+}
+
+body.neon .cell.x {
+    background-image: url('resources/neon_theme/n_x.png');
+}
+
+body.neon .cell.o {
+    background-image: url('resources/neon_theme/n_o.png');
+}
+
+body.neon #resetButton, body.neon #themeToggle {
+    background-color: #00ffff;
+    color: #000;
+    text-shadow: 0 0 5px #00ffff;
+}
+
+body.neon #resetButton:hover, body.neon #themeToggle:hover {
+    background-color: #00dddd;
+}
+
+/* Neon Skin - Dark Theme */
+body.dark-theme.neon {
+    background-color: #222;
+    color: #eee;
+    background-image: url('resources/neon_theme/n_bg_d.jpeg'); /* Dark Neon BG */
+}
+
+/* Dark Theme Overlay for Skins */
+body.dark-theme.retro .container,
+body.dark-theme.neon .container {
+    background-color: rgba(51, 51, 51, 0.8);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-theme.retro h1,
+body.dark-theme.neon h1 {
+    color: #eee;
+}
+
+body.dark-theme.retro .status,
+body.dark-theme.neon .status {
+    color: #6dd5ed;
+}
+
+body.dark-theme.retro .cell,
+body.dark-theme.neon .cell {
+    background-color: rgba(68, 68, 68, 0.8);
+}
+
+body.dark-theme.retro .cell:hover,
+body.dark-theme.neon .cell:hover {
+    background-color: rgba(85, 85, 85, 0.8);
+}
+
+body.dark-theme.retro #resetButton,
+body.dark-theme.retro #themeToggle,
+body.dark-theme.neon #resetButton,
+body.dark-theme.neon #themeToggle {
+    background-color: #6dd5ed;
+}
+
+body.dark-theme.retro #resetButton:hover,
+body.dark-theme.retro #themeToggle:hover,
+body.dark-theme.neon #resetButton:hover,
+body.dark-theme.neon #themeToggle:hover {
+    background-color: #55a3b8;
+}
